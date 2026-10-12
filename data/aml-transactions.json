@@ -1,0 +1,179 @@
+{
+  "description": "Fictional AML data for training only",
+  "rules": {
+    "currency": "INR",
+    "largeTransactionThreshold": 100000,
+    "repeatedTransactionMinimum": 40000,
+    "repeatedTransactionCount": 3,
+    "windowHours": 24
+  },
+  "scenarios": [
+    {
+      "scenarioId": "AML-DATA-01",
+      "scenario": "Amount below large-transaction threshold",
+      "expectedFlaggedCustomerIds": [],
+      "transactions": [
+        {
+          "transactionId": "TEST-32cca9ec-2266-492a-879a-ba2130528d32",
+          "customerId": "CUST-001",
+          "customerName": "Fictional CUST-001",
+          "amount": 99999,
+          "currency": "INR",
+          "timestamp": "2026-10-12T09:00:00Z"
+        }
+      ]
+    },
+    {
+      "scenarioId": "AML-DATA-02",
+      "scenario": "Amount exactly at large-transaction threshold",
+      "expectedFlaggedCustomerIds": [
+        "CUST-002"
+      ],
+      "transactions": [
+        {
+          "transactionId": "TEST-fd8624a5-b8f2-4e29-80a5-c0712d9fbf88",
+          "customerId": "CUST-002",
+          "customerName": "Fictional CUST-002",
+          "amount": 100000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T09:00:00Z"
+        }
+      ]
+    },
+    {
+      "scenarioId": "AML-DATA-03",
+      "scenario": "Amount above large-transaction threshold",
+      "expectedFlaggedCustomerIds": [
+        "CUST-003"
+      ],
+      "transactions": [
+        {
+          "transactionId": "TEST-54d17d80-96b1-4606-b23c-b7fc18abaec8",
+          "customerId": "CUST-003",
+          "customerName": "Fictional CUST-003",
+          "amount": 150000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T09:00:00Z"
+        }
+      ]
+    },
+    {
+      "scenarioId": "AML-DATA-04",
+      "scenario": "Three qualifying transactions within 24 hours",
+      "expectedFlaggedCustomerIds": [
+        "CUST-004"
+      ],
+      "transactions": [
+        {
+          "transactionId": "TEST-612f3ea0-ae23-445c-81f2-e014ee0c569b",
+          "customerId": "CUST-004",
+          "customerName": "Fictional CUST-004",
+          "amount": 40000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T08:00:00Z"
+        },
+        {
+          "transactionId": "TEST-0bf4f921-a88a-4348-a6b3-4d71d68a5f4a",
+          "customerId": "CUST-004",
+          "customerName": "Fictional CUST-004",
+          "amount": 45000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T12:00:00Z"
+        },
+        {
+          "transactionId": "TEST-80c3b174-35c1-4a37-892e-a98bf4027b83",
+          "customerId": "CUST-004",
+          "customerName": "Fictional CUST-004",
+          "amount": 50000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T18:00:00Z"
+        }
+      ]
+    },
+    {
+      "scenarioId": "AML-DATA-05",
+      "scenario": "Only two qualifying transactions",
+      "expectedFlaggedCustomerIds": [],
+      "transactions": [
+        {
+          "transactionId": "TEST-f5ab6817-06e7-41ff-b547-3b2256e878e0",
+          "customerId": "CUST-005",
+          "customerName": "Fictional CUST-005",
+          "amount": 40000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T08:00:00Z"
+        },
+        {
+          "transactionId": "TEST-49930635-b75f-47d4-ae44-8778fa356d83",
+          "customerId": "CUST-005",
+          "customerName": "Fictional CUST-005",
+          "amount": 45000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "scenarioId": "AML-DATA-06",
+      "scenario": "Third transaction outside the 24-hour window",
+      "expectedFlaggedCustomerIds": [],
+      "transactions": [
+        {
+          "transactionId": "TEST-ef74ab2b-a396-44b3-97ee-d69a863df04a",
+          "customerId": "CUST-006",
+          "customerName": "Fictional CUST-006",
+          "amount": 40000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T08:00:00Z"
+        },
+        {
+          "transactionId": "TEST-f982c610-88ac-4695-91e9-8d8dca629476",
+          "customerId": "CUST-006",
+          "customerName": "Fictional CUST-006",
+          "amount": 45000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T12:00:00Z"
+        },
+        {
+          "transactionId": "TEST-ca52fb5f-285e-4d3e-8bee-c7c6e5565dba",
+          "customerId": "CUST-006",
+          "customerName": "Fictional CUST-006",
+          "amount": 50000,
+          "currency": "INR",
+          "timestamp": "2026-10-13T08:00:01Z"
+        }
+      ]
+    },
+    {
+      "scenarioId": "AML-DATA-07",
+      "scenario": "Qualifying transactions belong to different customers",
+      "expectedFlaggedCustomerIds": [],
+      "transactions": [
+        {
+          "transactionId": "TEST-3fc1be87-1abf-4c90-bee4-cf9012caca36",
+          "customerId": "CUST-007",
+          "customerName": "Fictional CUST-007",
+          "amount": 40000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T08:00:00Z"
+        },
+        {
+          "transactionId": "TEST-c71266fd-5e66-4c0b-9933-236820b8e111",
+          "customerId": "CUST-008",
+          "customerName": "Fictional CUST-008",
+          "amount": 45000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T12:00:00Z"
+        },
+        {
+          "transactionId": "TEST-eda46f1d-ceda-413f-9a63-1826f97689d6",
+          "customerId": "CUST-009",
+          "customerName": "Fictional CUST-009",
+          "amount": 50000,
+          "currency": "INR",
+          "timestamp": "2026-10-12T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}

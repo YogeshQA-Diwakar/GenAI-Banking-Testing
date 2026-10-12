@@ -1,0 +1,84 @@
+{
+  "description": "Fictional KYC data for training only",
+  "validationDate": "2026-10-12",
+  "scenarios": [
+    {
+      "scenarioId": "KYC-DATA-01",
+      "scenario": "Valid adult customer",
+      "expectedValid": true,
+      "customer": {
+        "customerId": "CUST-001",
+        "name": "Daryl Reichel",
+        "dateOfBirth": "1990-05-15",
+        "address": "743 Beier Inlet",
+        "documentId": "TEST-JbawwDQIBI",
+        "documentType": "Passport"
+      }
+    },
+    {
+      "scenarioId": "KYC-DATA-02",
+      "scenario": "Missing name",
+      "expectedValid": false,
+      "customer": {
+        "customerId": "CUST-002",
+        "name": "",
+        "dateOfBirth": "1990-05-15",
+        "address": "4443 Kuvalis Passage",
+        "documentId": "TEST-7jpRftZwB7",
+        "documentType": "Passport"
+      }
+    },
+    {
+      "scenarioId": "KYC-DATA-03",
+      "scenario": "Customer younger than 18",
+      "expectedValid": false,
+      "customer": {
+        "customerId": "CUST-003",
+        "name": "Johnny Gutmann",
+        "dateOfBirth": "2010-05-15",
+        "address": "856 Spinka Circles",
+        "documentId": "TEST-Lfcz5SCI1A",
+        "documentType": "Passport"
+      }
+    },
+    {
+      "scenarioId": "KYC-DATA-04",
+      "scenario": "Unsupported document type",
+      "expectedValid": false,
+      "customer": {
+        "customerId": "CUST-004",
+        "name": "Chaim Hamill",
+        "dateOfBirth": "1990-05-15",
+        "address": "4983 Mattie Wells",
+        "documentId": "TEST-mLAG9oelvF",
+        "documentType": "Library Card"
+      }
+    },
+    {
+      "scenarioId": "KYC-DATA-05",
+      "scenario": "Missing document ID",
+      "expectedValid": false,
+      "customer": {
+        "customerId": "CUST-005",
+        "name": "Esta Stamm",
+        "dateOfBirth": "1990-05-15",
+        "address": "433 Jordy Neck",
+        "documentId": "",
+        "documentType": "Passport"
+      }
+    },
+    {
+      "scenarioId": "KYC-DATA-06",
+      "scenario": "Whitespace-only address",
+      "expectedValid": false,
+      "customer": {
+        "customerId": "CUST-006",
+        "name": "Geovanny Crooks",
+        "dateOfBirth": "1990-05-15",
+        "address": "   ",
+        "documentId": "TEST-VzsKJ3HQaM",
+        "documentType": "Passport"
+      }
+    }
+  ]
+}

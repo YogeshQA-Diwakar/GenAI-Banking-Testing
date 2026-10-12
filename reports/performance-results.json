@@ -1,0 +1,40 @@
+{
+  "description": "Local AML processing measurements for training",
+  "executedAt": "2026-10-12T06:32:02.477Z",
+  "environment": {
+    "operatingSystem": "Windows_NT 10.0.19045",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i7-6600U CPU @ 2.60GHz",
+    "logicalCpuCount": 4,
+    "totalMemoryGB": 7.89,
+    "nodeVersion": "v24.19.0"
+  },
+  "method": {
+    "measuredOperation": "screenTransactions",
+    "excluded": "Data generation and report writing",
+    "runsPerBatch": 1,
+    "customerCount": 100,
+    "amountPerTransaction": 40000,
+    "note": "Single-run local batch measurements; not concurrent-user or production load testing."
+  },
+  "results": [
+    {
+      "requirementId": "REQ-11",
+      "transactionCount": 1000,
+      "evaluationCount": 1000,
+      "elapsedMs": 9.821699999999993,
+      "targetMs": 2000,
+      "countMatches": true,
+      "status": "Passed"
+    },
+    {
+      "requirementId": "REQ-12",
+      "transactionCount": 10000,
+      "evaluationCount": 10000,
+      "elapsedMs": 66.50889999999998,
+      "targetMs": null,
+      "countMatches": true,
+      "status": "Passed"
+    }
+  ]
+}
